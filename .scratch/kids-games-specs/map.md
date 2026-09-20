@@ -62,6 +62,15 @@ informed by the specs' requirements.
   `neat-as-nine.md` (326), `read-to-me.md` (324), `read-by-myself.md` (300) written at v1 as the
   first interactive-player specs (original sample books, highlight-sync and fallback pacing
   pinned), each independently verified; 10 of 38 specs done.
+- [Write specs: Letters and word videos](issues/08-specs-letters-and-word-videos.md) —
+  `letter-tracing.md` (283), `ollos-alphabet-videos.md` (320), `sight-words-videos.md` (298)
+  written at v1 and independently verified (tracing tolerances and clip/phase timings re-derived;
+  original presenter only, no Ollo); 13 of 38 specs done.
+- [Write specs: Songs and movement](issues/09-specs-songs-and-movement.md) —
+  `head-shoulders-knees-and-toes.md` (308), `happy-and-you-know-it.md` (325), `baby-shark.md`
+  (318), `yoga-and-movement-videos.md` (299), `mindfulness-videos-alo-yoga.md` (322) written at v1;
+  four independently verified, Happy written by the orchestrator after subagent failures and
+  hand-verified (faulty early-tap AC caught); 18 of 38 specs done.
 
 ## Not yet specified
 

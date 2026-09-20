@@ -89,6 +89,12 @@ informed by the specs' requirements.
   `offline-library-kodis-suitcase.md` (366) written at v1 (representative Logic+ games designed;
   feature-level players with an original cast replacing the Khan Academy characters); each
   independently verified, cross-file items fixed and re-reviewed; 33 of 38 specs done.
+- [Write specs: Seasonal collections](issues/13-specs-seasonal-collections.md) —
+  `camp-khan-kids.md` (368), `earth-day-collection.md` (342), `halloween-collection.md` (406),
+  `winter-and-holiday-collections.md` (355) written at v1 from a shared brief
+  (`research/seasonal-collections-shared-brief.md`); each independently verified, two cross-file
+  rulings applied and re-reviewed; **all 38 documented entries now have specs**; tickets 14
+  (requirements digest) and 15 (engine/stack decision) remain.
 
 ## Not yet specified
 

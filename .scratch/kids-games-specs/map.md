@@ -79,6 +79,11 @@ informed by the specs' requirements.
   `book-basics-fiction-and-nonfiction.md` (350), `book-basics-story-structure.md` (320); each
   independently verified (resume-branch, success-lock, and timing defects fixed); 27 of 38 specs
   done.
+- [Write specs: Create tools](issues/11-specs-create-tools.md) — `drawing-and-coloring.md` (401)
+  and `storytelling-and-voice-recording.md` (420) written at v1; sandbox tools sharing canvas,
+  sticker, gallery, and export conventions (storytelling adds voice recording; audio in IndexedDB,
+  marked designed); each independently verified and the cross-spec consistency re-reviewed;
+  29 of 38 specs done.
 
 ## Not yet specified
 

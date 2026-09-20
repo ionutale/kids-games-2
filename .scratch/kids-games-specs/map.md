@@ -71,6 +71,14 @@ informed by the specs' requirements.
   (318), `yoga-and-movement-videos.md` (299), `mindfulness-videos-alo-yoga.md` (322) written at v1;
   four independently verified, Happy written by the orchestrator after subagent failures and
   hand-verified (faulty early-tap AC caught); 18 of 38 specs done.
+- [Write specs: Book Basics series](issues/10-specs-book-basics.md) — nine specs written at v1
+  from a shared brief (`research/book-basics-shared-brief.md`): `book-basics-book-cover.md` (327),
+  `book-basics-parts-of-a-book.md` (374), `book-basics-how-to-read-a-book.md` (397),
+  `book-basics-ask-while-you-read.md` (380), `book-basics-identifying-characters.md` (405),
+  `book-basics-reading-accuracy.md` (366), `book-basics-illustrations.md` (339),
+  `book-basics-fiction-and-nonfiction.md` (350), `book-basics-story-structure.md` (320); each
+  independently verified (resume-branch, success-lock, and timing defects fixed); 27 of 38 specs
+  done.
 
 ## Not yet specified
 

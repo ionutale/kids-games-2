@@ -84,6 +84,11 @@ informed by the specs' requirements.
   sticker, gallery, and export conventions (storytelling adds voice recording; audio in IndexedDB,
   marked designed); each independently verified and the cross-spec consistency re-reviewed;
   29 of 38 specs done.
+- [Write specs: Logic+, home, offline](issues/12-specs-logic-home-offline.md) —
+  `matching-games.md` (392), `memory-games.md` (443), `character-rooms-and-collections.md` (356),
+  `offline-library-kodis-suitcase.md` (366) written at v1 (representative Logic+ games designed;
+  feature-level players with an original cast replacing the Khan Academy characters); each
+  independently verified, cross-file items fixed and re-reviewed; 33 of 38 specs done.
 
 ## Not yet specified
 

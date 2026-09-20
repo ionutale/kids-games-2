@@ -58,6 +58,10 @@ informed by the specs' requirements.
   `smoothie-addition.md` (278), `tap-the-triangles.md` (314), `fill-in-the-pattern.md` (303)
   written at v1, each independently verified (official quotes blog-checked, defects fixed);
   7 of 38 specs done.
+- [Write specs: Books and reading modes](issues/07-specs-books-and-reading-modes.md) —
+  `neat-as-nine.md` (326), `read-to-me.md` (324), `read-by-myself.md` (300) written at v1 as the
+  first interactive-player specs (original sample books, highlight-sync and fallback pacing
+  pinned), each independently verified; 10 of 38 specs done.
 
 ## Not yet specified
 

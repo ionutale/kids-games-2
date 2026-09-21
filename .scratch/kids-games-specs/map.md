@@ -100,15 +100,25 @@ informed by the specs' requirements.
   progression/performance/accessibility with a common-core vs one-off summary
   (`research/platform-requirements-digest.md`); independently verified and corrected (14 defects);
   ticket 15 (engine/stack decision) is unblocked.
+- [Choose rendering engine, audio approach, and stack](issues/15-engine-and-stack-decision.md) —
+  three grilling rounds on the digest settled: DOM + SVG (canvas only for freehand ink), Web Audio
+  + `speechSynthesis`, vanilla ES modules with no build step, Pointer Events + keyboard, per-spec
+  localStorage keys, one self-contained `games/<slug>/` per game, runtime-only scope; recorded at
+  `docs/khan-academy-kids-games/stack-decision.md`; conformance pass folded into the doc,
+  cross-game progress parked; **the wayfinder's destination is reached** (38 specs + pilot +
+  stack decision).
 
 ## Not yet specified
 
-- **Conformance pass** — binding the finished specs to the chosen engine/stack; needed only if the
-  stack decision picks conventions the specs don't already capture.
-- **Cross-game leveling and progress unification** — per-game behavior is described in the specs,
-  but whether a single cross-game path/mastery model is wanted depends on the stack decision.
 - **Coverage beyond the 38 documented entries** — the app's other thousands of activities are
   undocumented; extending scope is a future effort.
+- **The platform/app shell** — navigation, profiles, parental controls, and offline packaging stay
+  out of scope; the stack decision covers the per-game runtime only.
+
+Resolved during the stack decision: the **conformance pass** is folded into
+`docs/khan-academy-kids-games/stack-decision.md` as a spec↔stack mapping (no ticket, no spec
+amendments), and **cross-game leveling/progress unification** is settled as per-spec keys only
+(revisit only if a shell is ever planned).
 
 ## Out of scope
 

@@ -95,6 +95,11 @@ informed by the specs' requirements.
   (`research/seasonal-collections-shared-brief.md`); each independently verified, two cross-file
   rulings applied and re-reviewed; **all 38 documented entries now have specs**; tickets 14
   (requirements digest) and 15 (engine/stack decision) remain.
+- [Extract platform requirements digest from all specs](issues/14-requirements-digest.md) —
+  535 Requirements entries from all 38 specs clustered into rendering/input/audio/data/
+  progression/performance/accessibility with a common-core vs one-off summary
+  (`research/platform-requirements-digest.md`); independently verified and corrected (14 defects);
+  ticket 15 (engine/stack decision) is unblocked.
 
 ## Not yet specified
 

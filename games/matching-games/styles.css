@@ -1,0 +1,316 @@
+/* Matching games (Logic+) — "Pair up"
+   Palette + layout numbers per spec section 8 / 11. */
+
+:root {
+  --bg: #EAF6F1;
+  --ink: #3E2C1E;
+  --cream: #FFF8EC;
+  --teal: #6FA8A0;
+  --gold: #F2B84B;
+  --coral: #E8804C;
+  --coral-stroke: #E2735C;
+  --green: #7BC47F;
+  --deep-green: #5FA463;
+  --violet: #8E7CC3;
+  --brick: #C96B58;
+  --sand: #E8B45C;
+  --sky: #A9C9E8;
+
+  /* layout numbers, recomputed by game.js per viewport */
+  --topbar: 144px;
+  --home: 64px;
+  --prompt: 140px;
+  --pip: 10px;
+  --pip-gap: 5px;
+  --gap: 16px;
+  --card: 140px;
+  --cols: 3;
+  --play-w: 960px;
+  --play-h: 600px;
+}
+
+* { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: ui-rounded, system-ui, -apple-system, "Segoe UI", "Trebuchet MS", sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+#app { position: fixed; inset: 0; overflow: hidden; }
+
+.bg-room { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* ---------- controls ---------- */
+
+.icon-btn {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  display: block;
+  transition: transform 80ms ease-out;
+  transform: scale(1);
+}
+.icon-btn.pressed { transform: scale(0.95); }
+.icon-btn .art { display: block; width: 100%; height: 100%; }
+
+.home-btn {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  width: var(--home);
+  height: var(--home);
+  border-radius: 16px;
+}
+
+.play-btn, .replay-btn {
+  width: 96px;
+  height: 96px;
+  border-radius: 24px;
+  padding: 14px;
+  background: var(--cream);
+  border: 3px solid rgba(62, 44, 30, 0.18);
+  box-shadow: 0 5px 12px rgba(62, 44, 30, 0.12);
+}
+
+:focus-visible {
+  outline: 4px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* ---------- top bar + prompt card ---------- */
+
+.topbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: var(--topbar);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prompt-card {
+  position: relative;
+  width: var(--prompt);
+  height: var(--prompt);
+  border-radius: calc(var(--prompt) * 0.14);
+  background: var(--cream);
+  border: 3px solid rgba(62, 44, 30, 0.18);
+  box-shadow: 0 5px 12px rgba(62, 44, 30, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.prompt-pict { width: 74%; height: 74%; }
+
+.pip-row {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--prompt) * 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pip-gap);
+}
+.pip {
+  position: relative;
+  flex: 0 0 var(--pip);   /* fixed ⌀: the 8-pip row must not shrink inside the 96 px card (§8) */
+  width: var(--pip);
+  height: var(--pip);
+  border-radius: 50%;
+  border: 2px solid rgba(62, 44, 30, 0.35);
+}
+.pip .fill {
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: var(--deep-green);
+  transform: scale(0);
+}
+
+/* ---------- play field + board ---------- */
+
+.playfield {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--topbar);
+  height: var(--play-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--card));
+  gap: var(--gap);
+}
+
+.card {
+  position: relative;
+  width: var(--card);
+  height: var(--card);
+  transform: translateY(0);
+  transition: transform 150ms ease-out;
+  cursor: pointer;
+}
+.card.selected { transform: translateY(-6px); }
+.card.board-frozen { pointer-events: none; }
+
+.card-inner {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 50%;
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+.card.matched .card-inner { opacity: 0.70; }
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  border-radius: calc(var(--card) * 0.12);
+  background: var(--cream);
+  border: 3px solid rgba(62, 44, 30, 0.18);
+  box-shadow: 0 4px 10px rgba(62, 44, 30, 0.13);
+}
+
+.glyph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.glyph svg {
+  width: max(36px, calc(var(--card) * 0.62));
+  height: max(36px, calc(var(--card) * 0.62));
+  display: block;
+}
+
+.ring, .flash-white, .flash-coral, .halo {
+  position: absolute;
+  inset: 0;
+  border-radius: calc(var(--card) * 0.12);
+  pointer-events: none;
+  opacity: 0;
+}
+.ring { border: 6px solid var(--gold); transition: opacity 150ms linear; }
+.card.selected .ring { opacity: 0.9; }
+.flash-white { background: #FFFFFF; opacity: 0; }
+.flash-coral { border: 4px solid var(--coral-stroke); opacity: 0; }
+.halo { border: 6px solid var(--gold); opacity: 0; transform-origin: 50% 50%; }
+
+.check {
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+  width: 40%;
+  height: 40%;
+  opacity: 0;
+  transform-origin: 70% 70%;
+}
+.card.matched .check { opacity: 1; }
+
+/* ---------- screens ---------- */
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  pointer-events: none;
+}
+.screen > * { pointer-events: auto; }
+
+.title-screen { gap: 34px; }
+
+.logo-btn {
+  position: relative;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  width: 128px;
+  height: 128px;
+  border-radius: 22px;
+  cursor: pointer;
+  transition: transform 80ms ease-out;
+}
+.logo-btn.pressed { transform: scale(0.95); }
+.logo-art { width: 100%; height: 100%; display: block; }
+
+.hold-ring {
+  position: absolute;
+  inset: -14px;
+  width: calc(100% + 28px);
+  height: calc(100% + 28px);
+  pointer-events: none;
+}
+.hold-ring-track {
+  fill: none;
+  stroke: rgba(62, 44, 30, 0.16);
+  stroke-width: 8;
+}
+.hold-ring-fill {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 339.3;
+  stroke-dashoffset: 339.3;
+  transform: rotate(-90deg);
+  transform-origin: 60px 60px;
+  opacity: 0;
+}
+.hold-ring-fill.holding { opacity: 1; }
+
+.hold-check {
+  position: absolute;
+  inset: 20%;
+  width: 60%;
+  height: 60%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.trophy-art {
+  width: 200px;
+  height: 200px;
+  display: block;
+}
+
+.confetti-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.particle {
+  position: absolute;
+  width: 12px;
+  height: 18px;
+  border-radius: 3px;
+  opacity: 0.95;
+}

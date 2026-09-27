@@ -107,6 +107,13 @@ informed by the specs' requirements.
   `docs/khan-academy-kids-games/stack-decision.md`; conformance pass folded into the doc,
   cross-game progress parked; **the wayfinder's destination is reached** (38 specs + pilot +
   stack decision).
+- [Build matching-games from its spec](issues/16-build-matching-games.md) — post-wayfinder
+  validation build (blind: spec + stack doc alone). Builder 29/29 ACs; independent verifier 29/29 +
+  full stack conformance, and 3 defects found outside the AC matrix (D-1 Critical reset-hold save
+  wipe, D-2 High stuck pointers, D-3 Low pip shrink); a parallel static review found the same
+  Critical/High paths. All fixed in one round and re-verified on the fixed revision (verifier full
+  re-run 73/73 + fresh spot-verifier 8/8 + orchestrator repro checks; source re-review all
+  addressed) — no new defects. Spec gaps recorded in the ticket answer; no spec amendments.
 
 ## Not yet specified
 
